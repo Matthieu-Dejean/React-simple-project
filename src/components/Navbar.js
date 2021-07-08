@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
-import * as FaIcons from "react-icons/fa";
+import * as HiIcons from "react-icons/hi";
 import * as AiIcons from "react-icons/ai";
 import { Link } from 'react-router-dom';
-import { SidebarData } from './SidebarData';
 import './navbar.css';
 import { IconContext } from 'react-icons';
+import { AllData } from './AllData';
 
 function Navbar() {
     const [sidebar, setSidebar] = useState(false)
@@ -12,10 +12,10 @@ function Navbar() {
     const showSidebar = () => setSidebar(!sidebar)
     return (
         <>
-        <IconContext.Provider value={{color: '#fff'}}>
+        <IconContext.Provider value={{color: 'black'}}>
             <div className="navbar">
                 <Link to="#" className="menu-bars">
-                    <FaIcons.FaBars onClick={showSidebar} />
+                    <HiIcons.HiMenu onClick={showSidebar} />
                 </Link>
             </div>
             <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -25,16 +25,14 @@ function Navbar() {
                             <AiIcons.AiOutlineClose />
                         </Link>
                     </li>
-                    {SidebarData.map((item, index) => {
-                        return (
-                            <li key={index} className={item.cName}>
-                                <Link to={item.path}>
-                                    {item.icon}
-                                    <span>{item.title}</span>
-                                </Link>
-                            </li>
-                        )
-                    })}
+                    <li className="nav-text">
+                        <Link to="/">Home</Link>
+                    </li>
+                    {AllData.posts.map((nav) => 
+                        <li className="nav-text">
+                            <Link to={"/post/"+nav.id}>Post {nav.id}</Link>
+                        </li>
+                    )}
                 </ul>
             </nav>
         </IconContext.Provider>

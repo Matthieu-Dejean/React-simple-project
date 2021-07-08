@@ -5,11 +5,15 @@
 }
 
 .home,
-.reports,
-.products {
+.post {
   display: flex;
-  height: 90vh;
+  height: 40vh;
   align-items: center;
   justify-content: center;
   font-size: 3rem;
+}
+
+.posts {
+  margin-left: 17rem;
+  margin-right: 17rem;
 }
